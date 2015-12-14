@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 #import "SWRevealViewController.h"
+#import "SidebarViewController.h"
+
 #import "Poster.h"
 #import "CustomCell.h"
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -22,28 +24,29 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Zing Radio";
+    self.title = @"Radio Việt Nam";
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
         [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.sidebarButton setAction: @selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
     CGFloat statusNavigationBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.bounds.size.height;
     CGRect tableViewRec = CGRectMake(0,statusNavigationBarHeight, self.view.bounds.size.width, self.view.bounds.size.height);
     
-    self.myTableView = [[UITableView alloc]initWithFrame:tableViewRec style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc]initWithFrame:tableViewRec
+                                                   style:UITableViewStylePlain];
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
     
     
-    Poster *data1 = [[Poster alloc] initWithTitle:@"Clint Eastwood" withImagePath:@"clint.jpg" andScore:6.3];
-    Poster *data2 = [[Poster alloc] initWithTitle:@"Kill Bill" withImagePath:@"kill-bill.jpg" andScore:5];
-    Poster *data3 = [[Poster alloc] initWithTitle:@"Marilyn Monroe" withImagePath:@"marilyn.jpg" andScore:8];
-    Poster *data4 = [[Poster alloc] initWithTitle:@"Taxi Driver" withImagePath:@"taxi-driver.jpg" andScore:7.4];
-    Poster *data5 = [[Poster alloc] initWithTitle:@"Pulp Finction" withImagePath:@"pulp-fiction.jpg" andScore:9];
+    Poster *data1 = [[Poster alloc] initWithTitle:@"Zing Radio " withImagePath:@"zing.jpg" andScore:6.3];
+    Poster *data2 = [[Poster alloc] initWithTitle:@"Xone FM" withImagePath:@"xonefm.jpeg" andScore:5];
+    Poster *data3 = [[Poster alloc] initWithTitle:@"Quick& Snow\n Show" withImagePath:@"quickandsnow.jpg" andScore:8];
+    Poster *data4 = [[Poster alloc] initWithTitle:@"VoV Giao thông" withImagePath:@"vov1.jpg" andScore:7.4];
+    Poster *data5 = [[Poster alloc] initWithTitle:@"The Voice" withImagePath:@"zing2.png" andScore:9];
     
     arrayData = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, data4, data5, nil];
 
@@ -82,6 +85,34 @@
     return 130;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SidebarViewController* details;
+//    if (!details) {
+//        details = [SidebarViewController new];
+//    }
+    [self.navigationController pushViewController:details animated:YES];
+    
+    
+}
+
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@
 //
 #import "SubMenu1.h"
 #import "SidebarViewController.h"
+#import "MainViewController.h"
 
 @interface SidebarViewController ()
 
@@ -27,27 +28,11 @@
 
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return _menuItems.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
-    return [self.menuItems count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    return cell;
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -58,11 +43,7 @@
     
     // Set the photo if it navigates to the PhotoView
     if ([segue.identifier isEqualToString:@"showPhoto"]) {
-        //   UINavigationController *navController = segue.destinationViewController;
-        //  SubMenu1 *photoController = [navController childViewControllers].firstObject;
-        //  NSString *photoFilename = [NSString stringWithFormat:@"%@_photo", [_menuItems objectAtIndex:indexPath.row]];
-        //  photoController.photoFilename = photoFilename;
-    }
+            }
 }
 
 
